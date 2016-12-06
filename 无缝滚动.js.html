@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		* { margin: 0;padding: 0; }
+		ul {list-style: none;}
+		img {vertical-align: middle;}
+		.box {
+			width: 600px;
+			height: 200px;
+			margin: 100px auto;
+			position: relative;
+			overflow: hidden;
+		}
+		ul {
+			width: 300%;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+		li {
+			float: left;
+		}
+	</style>
+</head>
+<body>
+	<div class="box" id="box">
+		<ul id="ul">
+			<li><a href="#"><img src="images/01.jpg"></a></li>
+			<li><a href="#"><img src="images/02.jpg"></a></li>
+			<li><a href="#"><img src="images/03.jpg"></a></li>
+			<li><a href="#"><img src="images/04.jpg"></a></li>
+			<li><a href="#"><img src="images/01.jpg"></a></li>
+			<li><a href="#"><img src="images/02.jpg"></a></li>
+		</ul>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	function $(id) { return document.getElementById(id); }
+	var num = 0, timer = null;
+	timer = setInterval(autoPlay,20);
+	function autoPlay() {
+		num--;
+		num <= -1200 ? num = 0 : num;
+		$('ul').style.left = num + 'px';
+	}
+	$('box').onmouseover = function() {
+		clearInterval(timer);
+	}
+	$('box').onmouseout = function() {
+		timer = setInterval(autoPlay, 20);
+	}
+</script>
